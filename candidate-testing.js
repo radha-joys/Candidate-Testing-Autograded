@@ -32,15 +32,16 @@ function gradeQuiz(candidateAnswers) {
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   //    todo 1.2c answer console.log(candidateAnswer.toLowerCase() === correctAnswer.toLowerCase() ? 'Correct answer' : 'Wrong Answer' );
   let numOfCorrectAnswers = 0;
-  console.log(`Candidate Name: ${candidateName}`);
+  console.log(`\nCandidate Name: ${candidateName}`);
   for (let i = 0; i < questions.length; i++) {
-    console.log(`${i + 1}). ${questions[i]}\nYour answer: ${candidateAnswers[i]}\nCorrect answer: ${correctAnswers[i]}\n`);
+    console.log(`${i + 1}) ${questions[i]}\nYour Answer: ${candidateAnswers[i]}\nCorrect Answer: ${correctAnswers[i]}\n`);
     if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
       numOfCorrectAnswers++;
     }
   }
-
   let grade = (numOfCorrectAnswers / questions.length) * 100; //TODO 3.2 use this variable to calculate the candidates score.
+  console.log(`>>> Overall Grade: ${grade}% (${numOfCorrectAnswers} of ${questions.length} responses correct) <<<`);
+  console.log(grade >= 80 ? `>>> Status: PASSED <<<` : `>>> Status: FAILED <<<`);
   return grade;
 }
 
@@ -49,15 +50,7 @@ function runProgram() {
   // TODO 1.1c: Greet candidate using their name //
   console.log(`Welcome ${candidateName}`);
   askQuestion();
-  let grade = gradeQuiz(candidateAnswers);
-  let numOfCorrectAnswers = 0;  // Add this line
-  for (let i = 0; i < questions.length; i++) {
-    if (candidateAnswers[i].toLowerCase() === correctAnswers[i].toLowerCase()) {
-      numOfCorrectAnswers++;
-    }
-  }
-  console.log(`>>> Overall Grade: ${grade}% (${numOfCorrectAnswers} of ${questions.length} responses correct) <<<`);
-  console.log(grade >= 80 ? `>>> Status: PASSED <<<` : `>>> Status: FAILED <<<`);
+  gradeQuiz(this.candidateAnswers);
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
